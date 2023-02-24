@@ -87,7 +87,6 @@ exports.login = async (req, res, next) => {
       access_token: token,
       expires_in: expires_in.exp,
       token_type: 'Bearer'
-
     })
   } catch (error) {
     next(error)
