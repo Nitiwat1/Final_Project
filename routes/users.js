@@ -8,7 +8,7 @@ const checkAdmin = require("../middleware/checkAdmin").isAdmin;
 /* GET users listing. */
 router.get('/', userControllers.index)
 
-router.get('/me', [passportJWT, checkAdmin], userControllers.profile)
+router.get('/me', [passportJWT ], userControllers.profile)
 // console.log(body('name','email','password'))
 router.post('/', [
   body('name').not().isEmpty().withMessage('กรุณาป้อนชื่อสกุลด้วย'),

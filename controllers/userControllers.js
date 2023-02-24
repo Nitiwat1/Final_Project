@@ -3,10 +3,18 @@ const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const Config = require('../config/index')
 
-exports.index = (req, res, next) => {
-  // res.send('Hello kitty');
+exports.index = async (req, res, next) => {
+  const user = await User.find().select().sort({ _id: -1 });
+  const shopWithPhotoDomain = await user.map((users) => {
+
+      return {
+          id: users._id,
+          name: users.name,
+          role:users.role    
+      }
+  })
   res.status(200).json({
-    fullname: 'Nitiwat Phomemarasee'
+      data: shopWithPhotoDomain,
   })
 };
 
