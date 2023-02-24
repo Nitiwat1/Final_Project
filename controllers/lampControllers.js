@@ -71,7 +71,7 @@ exports.show = async (req, res, next) => {
         const lamp = await Lamp.findById(id).populate("brand");
 
         if (!lamp) {
-            const error = new Error("headphone not founded ❗");
+            const error = new Error("lamp not founded ❗");
             error.statusCode = 400;
             throw error;
         }
