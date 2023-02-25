@@ -100,7 +100,7 @@ exports.show = async (req, res, next) => {
 exports.update = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { name, detail, shopid } = req.body;
+        const { name, detail, id } = req.body;
        
         console.log(mongoose.Types.ObjectId.isValid(shopid))
         const lamp = await Lamp.updateOne
