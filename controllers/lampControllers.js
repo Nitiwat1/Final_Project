@@ -102,6 +102,13 @@ exports.update = async (req, res, next) => {
         const { id } = req.params;
         const { name, detail, shopid } = req.body;
        
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            const error = new Error("The received data is not valid.")
+            error.statusCode = 422
+            error.validation = errors.array()
+            throw error;
+        }
         console.log(mongoose.Types.ObjectId.isValid(shopid))
         const lamp = await Lamp.updateOne
             (
@@ -115,9 +122,10 @@ exports.update = async (req, res, next) => {
             const error = new Error("Lamp not founded ❗");
             error.statusCode = 400;
             throw error;
-        }
+        }else{
         res.status(200).json({
             message: "Updated Successfully ✔",
+        }
         });
     } catch (err) {
         next(err);
