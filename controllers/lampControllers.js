@@ -107,8 +107,8 @@ exports.update = async (req, res, next) => {
             (
                 { _id : shopid },
                 {
-                    name: name,
-                    detail: detail
+                    lamp.name: name,
+                    lamp.detail: detail
                 });
 
         if (!lamp === 0) {
