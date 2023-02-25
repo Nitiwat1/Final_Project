@@ -122,10 +122,10 @@ exports.update = async (req, res, next) => {
             const error = new Error("Lamp not founded ❗");
             error.statusCode = 400;
             throw error;
-        }else{
+        }
         res.status(200).json({
             message: "Updated Successfully ✔",
-        }
+        
         });
     } catch (err) {
         next(err);
